@@ -1,15 +1,15 @@
 
-ESX                           = nil
+local QBCore = exports['qb-core']:GetCoreObject()
 local PlayerData                = {}
 
 Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+	while QBCore == nil do
+		TriggerEvent('QBCore:GetCorObject', function(obj) QBCore = obj end)
 		Citizen.Wait(0)
 	end
 
 	Citizen.Wait(5000)
-	PlayerData = ESX.GetPlayerData()
+	PlayerData = QBCore.Functions.GetPlayerData()
 end)
 
 
